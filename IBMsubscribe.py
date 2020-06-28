@@ -17,6 +17,17 @@ def myCommandCallback(cmd):
         print("MOTOR ON")
     elif cmd.data['command']=='motoroff':
         print("MOTOR OFF")
+    if cmd.command == "setInterval":
+        if 'interval' not in cmd.data:
+            print("Error - command is missing required information: 'interval'")
+        else:
+            interval = cmd.data['interval']
+    elif cmd.command == "print":
+        if 'message' not in cmd.data:
+            print("Error - command is missing required information: 'message'")
+        else:
+            output=cmd.data['message']
+            print(output)
 
 try:
     deviceOptions = {"org": organization, "type": deviceType, "id": deviceId, "auth-method": authMethod, "auth-token": authToken}
